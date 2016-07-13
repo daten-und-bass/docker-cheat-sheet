@@ -34,7 +34,7 @@ GUIDELINE
 ### Docker: ENGINE ###
 
 COMPUTE
-	* start|stop:
+* start|stop:
     `docker-machine start|stop <host_name>` 
 	* ssh into:
 		`docker-machine ssh <host_name>` 
