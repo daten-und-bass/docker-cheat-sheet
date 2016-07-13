@@ -115,11 +115,11 @@ COMPUTE
 
 NETWORK
 * get container ip:
-			```
-			docker ps // get id
-			docker network inspect <network_name> // check ip of that id
-			```
-	* Alternative: `docker inspect <container_name>`
+	```
+	docker ps // get id
+	docker network inspect <network_name> // check ip of that id
+	```
+* Alternative: `docker inspect <container_name>`
 * map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
 STORAGE
