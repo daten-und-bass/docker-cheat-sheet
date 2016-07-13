@@ -29,9 +29,7 @@ GUIDELINE
 	* Intgrate: https://dzone.com/articles/10-practical-docker-tips-for-day-to-day-docker-usa
 		
 
-## Docker ##
-
-### Docker: ENGINE ###
+## Docker: ENGINE ##
 
 COMPUTE
 * start|stop: `docker-machine start|stop <host_name>` 
@@ -72,7 +70,7 @@ OTHER
 * get env vars: `docker-machine env <host_name>`
 
 
-### Docker: IMAGES ###
+## Docker: IMAGES ##
 
 COMPUTE
 * build:  
@@ -92,7 +90,7 @@ OTHER
 * get help: `docker <command_name> --help`
 
 
-### Docker: CONTAINER ###
+## Docker: CONTAINER ##
 
 COMPUTE
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
@@ -114,7 +112,7 @@ COMPUTE
 NETWORK
 * get container ip:  
 `docker ps` // get id  
-`docker network inspect <network_name>` // check ip of that
+`docker network inspect <network_name>` // check ip of this id
 	* Alternative: `docker inspect <container_name>`
 * map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
@@ -127,5 +125,5 @@ STORAGE
 		`docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
 
 OTHER
-* get help: `docker <command_name> --help
+* get help: `docker <command_name> --help`
 	
