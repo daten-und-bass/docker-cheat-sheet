@@ -103,7 +103,8 @@ COMPUTE
 * "ssh"/bash into: `docker exec -it app1_tl1_tl2_1 /bin/bash`
 	* Alternative: `docker attach app1_tl1_tl2_1`
         * http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec
-        	> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
+> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
+
 * start|stop: `docker start|restart|stop app1_tl1_tl2_1`
 * rename: `docker rename app1_tl1_tl2_1 <new_name>`
 * list: `docker ps [-a]`
@@ -114,10 +115,10 @@ COMPUTE
 
 NETWORK
 * get container ip:
-```
-docker ps // get id
-docker network inspect <network_name> // check ip of that id
-```
+			```
+			docker ps // get id
+			docker network inspect <network_name> // check ip of that id
+			```
 	* Alternative: `docker inspect <container_name>`
 * map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
