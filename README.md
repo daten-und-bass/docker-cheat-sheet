@@ -58,11 +58,11 @@ STORAGE
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
 * Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container):
-```
+	```
     docker-machine ssh <host_name> 
 	sudo -i
 	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
-```
+	```
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
 * delete (named) volume: `docker volume rm <volume_name>`
 
@@ -76,8 +76,10 @@ OTHER
 
 COMPUTE
 * build:
-	`cd .`
-    `docker build -t <image_name> .`
+	```
+	cd .
+    docker build -t <image_name> .
+    ```
 * list: `docker images [-a]`
 * delete: `docker rmi app1_tl1_tl2_img`
 * delete dangling images in docker ps (listed as "none"):
@@ -101,7 +103,7 @@ COMPUTE
 * "ssh"/bash into: `docker exec -it app1_tl1_tl2_1 /bin/bash`
 	* Alternative: `docker attach app1_tl1_tl2_1`
         * http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec
-          > Attach isn't for running an extra thing in a container, it's for attaching to the running process.
+        	> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
 * start|stop: `docker start|restart|stop app1_tl1_tl2_1`
 * rename: `docker rename app1_tl1_tl2_1 <new_name>`
 * list: `docker ps [-a]`
