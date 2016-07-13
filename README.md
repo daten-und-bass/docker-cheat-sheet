@@ -16,12 +16,12 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 
 ### GUIDELINE ###
 * container / images /etc.
-	* short if possible/still telling)
+	* short (if possible/still telling)
 		* app1_tl1_tl2 app1_tl1_tl2_img
     	* 'tl1' as for tool1 e.g app1_node_exp_ssl or app1_node_exp_ssl_img
     * Use docker-compose project prefix and instance suffix
 
-### General: EXTERNAL SOURCES ###
+## General: EXTERNAL SOURCES ##
 
 * @TODO:
 	* Intgrate: https://dzone.com/articles/10-practical-docker-tips-for-day-to-day-docker-usa
