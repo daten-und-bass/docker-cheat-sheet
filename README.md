@@ -75,7 +75,7 @@ OTHER
 ### Docker: IMAGES ###
 
 COMPUTE
-* build:
+* build:  
 `cd .`  
 `docker build -t <image_name> .`
 * list: `docker images [-a]`
@@ -112,7 +112,7 @@ COMPUTE
 * get long id: `docker ps -a --no-trunc`
 
 NETWORK
-* get container ip:
+* get container ip:  
 `docker ps` // get id  
 `docker network inspect <network_name>` // check ip of that
 * Alternative: `docker inspect <container_name>`
