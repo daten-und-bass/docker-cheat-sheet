@@ -34,73 +34,53 @@ GUIDELINE
 ### Docker: ENGINE ###
 
 COMPUTE
-* start|stop:
-`docker-machine start|stop <host_name>` 
-* ssh into:
-`docker-machine ssh <host_name>` 
-* send one ssh command:
-`docker-machine ssh <host_name> '<command> <params> <...>'`
-* adjust time drift:
-`docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org // only in docker toolbox virtualbox vm'
+* start|stop: `docker-machine start|stop <host_name>` 
+* ssh into: `docker-machine ssh <host_name>` 
+* send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>'`
+* adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org // only in docker toolbox virtualbox vm'
 
 NETWORK
-* list network:
-`docker network ls`
-* get info for default container network 'bridge':
-`docker network inspect bridge`
-* get docker host ip:	
-`docker-machine ip <host_name>`
-* create custom bridge network:
-docker network create --driver bridge <network_name>`
+* list network: `docker network ls`
+* get info for default container network "bridge": `docker network inspect bridge`
+* get docker host ip: `docker-machine ip <host_name>`
+* create custom bridge network: 'docker network create --driver bridge <network_name>`
 	* Optional:
-		* specify a subnet (so it does not overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
+		* specify a subnet (to avoid overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
       	* specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
     * connect container to it:
-      * in 'run' command (only one network):
-        * `docker run <...> --net=<network_name> <...> `
-      * connect container after its creation:
-        * `docker network connect <network_name> <container_name>`
-      * give container a static ip:`<...> --ip=192.168.1.11 <...>`
-* delete custom network:
-	`docker network rm <network_name>`
+      * in `run` command (only one network): `docker run <...> --net=<network_name> <...> `
+      * connect existing container: `docker network connect <network_name> <container_name>`
+      * give container a static ip: `<...> --ip=192.168.1.11 <...>`
+* delete custom network: `docker network rm <network_name>`
 
 STORAGE
-	* list volumes:
-		`docker volume ls`
-  * create (named) volume (available only on this docker host):
-    `docker volume create --name <volume_name>`
-	* Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container)
-		```
+* list volumes: `docker volume ls`
+* create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
+* Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container)
+```
     docker-machine ssh <host_name> 
-		sudo -i
-		cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
-    ```
-  * copy from docker host into container:
-    `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
-  * delete (named) volume:
-    `docker volume rm vo0_tl1`
+	sudo -i
+	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
+```
+* copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
+* delete (named) volume: `docker volume rm vo0_tl1`
 
 OTHER
-	* listen to events:
-		`docker events`
-	* get help: 
-		`docker-machine <command_name> --help`
-	* get env vars:
-		`docker-machine env <host_name>`
+* listen to events: `docker events`
+* get help: `docker-machine <command_name> --help`
+* get env vars: `docker-machine env <host_name>`
 
 
 ### Docker: IMAGES ###
 
 COMPUTE
-  * build:
-    `cd .`
+* build:
+	`cd .`
     `docker build -t <image_name> .`
-  * list:
-    `docker images [-a]`
-  * delete:
-    `docker rmi tl1_tl2_img`
-  * delete dangling images in docker ps ('<none>'):
-    `docker rmi $(docker images --quiet --filter "dangling=true")`
+* list: `docker images [-a]`
+* delete: `docker rmi tl1_tl2_img`
+* delete dangling images in docker ps ('<none>'):
+	`docker rmi $(docker images --quiet --filter "dangling=true")`
     `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error if no dangling images exist)
    
 NETWORK
@@ -108,8 +88,7 @@ NETWORK
 STORAGE
 
 OTHER
-  * get help:
-    `docker <command_name> --help`
+* get help: `docker <command_name> --help`
 
 
 ### Docker: CONTAINER ###
