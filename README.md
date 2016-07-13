@@ -37,7 +37,8 @@ COMPUTE
 * start|stop: `docker-machine start|stop <host_name>` 
 * ssh into: `docker-machine ssh <host_name>` 
 * send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>`
-* adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org` // only in docker toolbox virtualbox vm
+* adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org`
+	* only neccessary in a docker toolbox vm on virtualbox 
 
 NETWORK
 * list network: `docker network ls`
@@ -78,10 +79,10 @@ COMPUTE
 	`cd .`
     `docker build -t <image_name> .`
 * list: `docker images [-a]`
-* delete: `docker rmi tl1_tl2_img`
-* delete dangling images in docker ps ('<none>'):
+* delete: `docker rmi app1_tl1_tl2_img`
+* delete dangling images in docker ps (listed as "none"):
 	`docker rmi $(docker images --quiet --filter "dangling=true")`
-    `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error if no dangling images exist)
+    `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist)
    
 NETWORK
 
@@ -94,50 +95,38 @@ OTHER
 ### Docker: CONTAINER ###
 
 COMPUTE
-	* create & run:
-		`docker run -itd -p 3000:3000 -v /Users/ich/Development/Tools/Node:/mnt/Node --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
-		* Optional:
-      * check results: `docker inspect app1_tl1_tl2_1`
-	* 'ssh'/bash into:
-		'docker exec -it app1_tl1_tl2_1 /bin/bash'
-      * Alternative: 'docker attach app1_tl1_tl2_1'
+* create & run: `docker run -itd -p 3000:3000 -v /Users/ich/Development/Tools/Node:/mnt/Node --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
+	* Optional:
+		* check results: `docker inspect app1_tl1_tl2_1`
+* 'ssh'/bash into: 'docker exec -it app1_tl1_tl2_1 /bin/bash'
+	* Alternative: 'docker attach app1_tl1_tl2_1'
         * http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec
           > Attach isn't for running an extra thing in a container, it's for attaching to the running process.
-	* start|stop:
-	  `docker start|restart|stop app1_tl1_tl2_1`
-  * rename:
-    `docker rename app1_tl1_tl2_1 <new_name>`
-  * list:
-    `docker ps [-a]`
-  * get runnings processes:
-    `docker top app1_tl1_tl2_1`
-  * get logs:
-    `docker logs app1_tl1_tl2_1`
-	* delete:
-	  `docker rm [-vf] app1_tl1_tl2_1`
-  * get long id
-    `docker ps -a --no-trunc`
+* start|stop: `docker start|restart|stop app1_tl1_tl2_1`
+* rename: `docker rename app1_tl1_tl2_1 <new_name>`
+* list: `docker ps [-a]`
+* get runnings processes: `docker top app1_tl1_tl2_1`
+* get logs: `docker logs app1_tl1_tl2_1`
+* delete: `docker rm [-vf] app1_tl1_tl2_1` // 
+* get long id: `docker ps -a --no-trunc`
 
 NETWORK
-  * get container ip:
-  	$ docker ps // get id
-  	$ docker network inspect <network_name> // check ip of that id
-      * Alternative: `docker inspect <container_name>`
-  * expose port (via cli):
-    $ `docker run <...> -p 8529:8529 <...>`
+* get container ip:
+```
+docker ps // get id
+docker network inspect <network_name> // check ip of that id
+```
+	* Alternative: `docker inspect <container_name>`
+* map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
 STORAGE
-  * map volumes:
-  	`docker run <...> -v /source/path/on/host:/destination/path/in/container <...>`
-  * volume deletion needs to happen excplitly on container deletion via `-v`:
-    `docker rm -v <container_name>`
-  * delete all exited containers including their volumes:
-    `docker rm -v $(docker ps -a -q -f status=exited)`
-  * delete the unwanted / left overs:
-    * __README first__: https://dzone.com/articles/docker-clean-after-yourself
-      `docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
+* map volumes (from host to container: `docker run <...> -v /source/path/on/host:/destination/path/in/container <...>`
+* volume deletion (via `-v` in `docker run`, not for named volumes) needs to happen excplitly on container deletion via `-v`: `docker rm -v <container_name>`
+* delete all exited containers including their volumes: `docker rm -v $(docker ps -a -q -f status=exited)`
+* delete the unwanted / left overs:
+	* __README first__: https://dzone.com/articles/docker-clean-after-yourself
+		`docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
 
 OTHER
-  * get help:
-  	`docker <command_name> --help
+* get help: `docker <command_name> --help
 	
