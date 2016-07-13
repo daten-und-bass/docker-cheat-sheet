@@ -12,11 +12,9 @@
 # Docker Cheat Sheet #
 Important Docker Commands Ordered by Engine, Images and Container and then by Compute, Network, Storage
 
-## General ##
+## General: NAMING CONVENTION ##
 
-### General: NAMING CONVENTION ###
-
-GUIDELINE
+### GUIDELINE ###
 * container / images /etc.
 	* short if possible/still telling)
 		* app1_tl1_tl2 app1_tl1_tl2_img
@@ -31,14 +29,14 @@ GUIDELINE
 
 ## Docker: ENGINE ##
 
-COMPUTE
+### COMPUTE ###
 * start|stop: `docker-machine start|stop <host_name>` 
 * ssh into: `docker-machine ssh <host_name>` 
 * send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>`
 * adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org`
 	* only neccessary in a docker toolbox vm on virtualbox 
 
-NETWORK
+### NETWORK ###
 * list network: `docker network ls`
 * get info for default container network "bridge": `docker network inspect bridge`
 * get docker host ip: `docker-machine ip <host_name>`
@@ -52,7 +50,7 @@ NETWORK
       * give container a static ip: `<...> --ip=192.168.1.11 <...>`
 * delete custom network: `docker network rm <network_name>`
 
-STORAGE
+### STORAGE ###
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
 * Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container):
@@ -64,7 +62,7 @@ STORAGE
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
 * delete (named) volume: `docker volume rm <volume_name>`
 
-OTHER
+### OTHER ###
 * listen to events: `docker events`
 * get help: `docker-machine <command_name> --help`
 * get env vars: `docker-machine env <host_name>`
@@ -72,7 +70,7 @@ OTHER
 
 ## Docker: IMAGES ##
 
-COMPUTE
+### COMPUTE ###
 * build:  
 `cd .`  
 `docker build -t <image_name> .`
@@ -82,17 +80,17 @@ COMPUTE
 	`docker rmi $(docker images --quiet --filter "dangling=true")`
     `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist)
    
-NETWORK
+### NETWORK ###
 
-STORAGE
+### STORAGE ###
 
-OTHER
+### OTHER ###
 * get help: `docker <command_name> --help`
 
 
 ## Docker: CONTAINER ##
 
-COMPUTE
+### COMPUTE ###
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
 	* Optional:
 		* check results: `docker inspect app1_tl1_tl2_1`
@@ -109,14 +107,14 @@ COMPUTE
 * delete: `docker rm [-vf] app1_tl1_tl2_1`
 * get long id: `docker ps -a --no-trunc`
 
-NETWORK
+### NETWORK ###
 * get container ip:  
 `docker ps` // get id  
 `docker network inspect <network_name>` // check ip of this id
 	* Alternative: `docker inspect <container_name>`
 * map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
-STORAGE
+### STORAGE ###
 * map volumes (from host to container: `docker run <...> -v /source/path/on/host:/destination/path/in/container <...>`
 * volume deletion (via `-v` in `docker run`, not for named volumes) needs to happen excplitly on container deletion via `-v`: `docker rm -v <container_name>`
 * delete all exited containers including their volumes: `docker rm -v $(docker ps -a -q -f status=exited)`
@@ -124,6 +122,6 @@ STORAGE
 	* __README first__: https://dzone.com/articles/docker-clean-after-yourself
 		`docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
 
-OTHER
+### OTHER ###
 * get help: `docker <command_name> --help`
 	
