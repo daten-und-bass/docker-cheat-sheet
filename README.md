@@ -43,7 +43,7 @@ NETWORK
 * list network: `docker network ls`
 * get info for default container network "bridge": `docker network inspect bridge`
 * get docker host ip: `docker-machine ip <host_name>`
-* create custom bridge network: 'docker network create --driver bridge <network_name>`
+* create custom bridge network: `docker network create --driver bridge <network_name>`
 	* Optional:
 		* specify a subnet (to avoid overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
       	* specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
@@ -56,14 +56,14 @@ NETWORK
 STORAGE
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
-* Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container)
+* Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container):
 ```
     docker-machine ssh <host_name> 
 	sudo -i
 	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
 ```
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
-* delete (named) volume: `docker volume rm vo0_tl1`
+* delete (named) volume: `docker volume <host_name>`
 
 OTHER
 * listen to events: `docker events`
