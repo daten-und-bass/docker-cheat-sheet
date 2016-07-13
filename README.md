@@ -63,7 +63,7 @@ STORAGE
 	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
 ```
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
-* delete (named) volume: `docker volume <host_name>`
+* delete (named) volume: `docker volume rm <volume_name>`
 
 OTHER
 * listen to events: `docker events`
