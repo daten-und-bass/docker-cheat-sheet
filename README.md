@@ -76,10 +76,8 @@ OTHER
 
 COMPUTE
 * build:
-	```
-	cd .
-    docker build -t <image_name> .
-    ```
+	`cd .`
+    `docker build -t <image_name> .`
 * list: `docker images [-a]`
 * delete: `docker rmi app1_tl1_tl2_img`
 * delete dangling images in docker ps (listed as "none"):
@@ -115,10 +113,9 @@ COMPUTE
 
 NETWORK
 * get container ip:
-	```
-	docker ps // get id
-	docker network inspect <network_name> // check ip of that id
-	```
+	`docker ps // get id`
+	`docker network inspect <network_name> // check ip of that `
+	
 * Alternative: `docker inspect <container_name>`
 * map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
 
