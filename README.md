@@ -95,7 +95,7 @@ OTHER
 ### Docker: CONTAINER ###
 
 COMPUTE
-* create & run: `docker run -itd -p 3000:3000 -v /Users/ich/Development/Tools/Node:/mnt/Node --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
+* create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
 	* Optional:
 		* check results: `docker inspect app1_tl1_tl2_1`
 * 'ssh'/bash into: 'docker exec -it app1_tl1_tl2_1 /bin/bash'
