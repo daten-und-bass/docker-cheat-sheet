@@ -36,8 +36,8 @@ GUIDELINE
 COMPUTE
 * start|stop: `docker-machine start|stop <host_name>` 
 * ssh into: `docker-machine ssh <host_name>` 
-* send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>'`
-* adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org // only in docker toolbox virtualbox vm'
+* send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>`
+* adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org // only in docker toolbox virtualbox vm`
 
 NETWORK
 * list network: `docker network ls`
