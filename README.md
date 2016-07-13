@@ -96,6 +96,8 @@ OTHER
 
 ### Docker: CONTAINER ###
 
+> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
+
 COMPUTE
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
 	* Optional:
