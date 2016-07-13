@@ -96,15 +96,13 @@ OTHER
 
 ### Docker: CONTAINER ###
 
-> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
-
 COMPUTE
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name app1_tl1_tl2_1 app1_tl1_tl2_img` 
 	* Optional:
 		* check results: `docker inspect app1_tl1_tl2_1`
 * "ssh"/bash into: `docker exec -it app1_tl1_tl2_1 /bin/bash`
 	* Alternative: `docker attach app1_tl1_tl2_1`( http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec )
-	* > Attach isn't for running an extra thing in a container, it's for attaching to the running process.
+	> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
 
 * start|stop: `docker start|restart|stop app1_tl1_tl2_1`
 * rename: `docker rename app1_tl1_tl2_1 <new_name>`
