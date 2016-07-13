@@ -44,25 +44,25 @@ COMPUTE
 `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org // only in docker toolbox virtualbox vm'
 
 NETWORK
-  * list network:
-    `docker network ls`
-	* get info for default container network 'bridge':
-		`docker network inspect bridge`
-	* get docker host ip:	
-    `docker-machine ip <host_name>`
-  * create custom bridge network:
-    `docker network create --driver bridge <network_name>`
-    * Optional:
-      * specify a subnet (so it does not overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
-      * specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
+* list network:
+`docker network ls`
+* get info for default container network 'bridge':
+`docker network inspect bridge`
+* get docker host ip:	
+`docker-machine ip <host_name>`
+* create custom bridge network:
+docker network create --driver bridge <network_name>`
+	* Optional:
+		* specify a subnet (so it does not overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
+      	* specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
     * connect container to it:
       * in 'run' command (only one network):
         * `docker run <...> --net=<network_name> <...> `
       * connect container after its creation:
         * `docker network connect <network_name> <container_name>`
       * give container a static ip:`<...> --ip=192.168.1.11 <...>`
-  * delete custom network:
-    `docker network rm <network_name>`
+* delete custom network:
+	`docker network rm <network_name>`
 
 STORAGE
 	* list volumes:
