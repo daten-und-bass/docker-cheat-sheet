@@ -30,14 +30,14 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 ## Docker: ENGINE ##
 
 ### COMPUTE ###
-* start|stop: `docker-machine start|stop <host_name>` 
+* start | stop: `docker-machine start|stop <host_name>` 
 * ssh into: `docker-machine ssh <host_name>` 
 * send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>`
 * adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org`
 	* only neccessary in a docker toolbox vm on virtualbox 
 
 ### NETWORK ###
-* list network: `docker network ls`
+* list networks: `docker network ls`
 * get info for default container network "bridge": `docker network inspect bridge`
 * get docker host ip: `docker-machine ip <host_name>`
 * create custom bridge network: `docker network create --driver bridge <network_name>`
@@ -45,7 +45,7 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 		* specify a subnet (to avoid overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
       	* specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
     * connect container to it:
-      * in `run` command (only one network): `docker run <...> --net=<network_name> <...> `
+      * in `run` command (only one network allowed): `docker run <...> --net=<network_name> <...> `
       * connect existing container: `docker network connect <network_name> <container_name>`
       * give container a static ip: `<...> --ip=192.168.1.11 <...>`
 * delete custom network: `docker network rm <network_name>`
@@ -55,8 +55,8 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
 * Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container):
 	```
-    docker-machine ssh <host_name> 
-	sudo -i
+    docker-machine ssh <host_name>  
+	sudo -i  
 	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
 	```
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
@@ -99,7 +99,7 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 
 		> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
 
-* start|stop: `docker start|restart|stop app1_tl1_tl2_1`
+* start | stop: `docker start|restart|stop app1_tl1_tl2_1`
 * rename: `docker rename app1_tl1_tl2_1 <new_name>`
 * list: `docker ps [-a]`
 * get runnings processes: `docker top app1_tl1_tl2_1`
@@ -112,11 +112,11 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 `docker ps` // get id  
 `docker network inspect <network_name>` // check ip of this id
 	* Alternative: `docker inspect <container_name>`
-* map exposed port to docker host: `docker run <...> -p 8529:8529 <...>`
+* map exposed container port to docker host: `docker run <...> -p 8529:8529 <...>`
 
 ### STORAGE ###
 * map volumes (from host to container: `docker run <...> -v /source/path/on/host:/destination/path/in/container <...>`
-* volume deletion (via `-v` in `docker run`, not for named volumes) needs to happen excplitly on container deletion via `-v`: `docker rm -v <container_name>`
+* volume deletion (via `-v` in `docker run`, not for named volumes) needs to be excplit on container deletion via `-v`: `docker rm -v <container_name>`
 * delete all exited containers including their volumes: `docker rm -v $(docker ps -a -q -f status=exited)`
 * delete the unwanted / left overs:
 	* __README first__: https://dzone.com/articles/docker-clean-after-yourself
