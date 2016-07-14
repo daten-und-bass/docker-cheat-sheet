@@ -54,11 +54,9 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
 * Edit container file: (http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container):
-	```
-    docker-machine ssh <host_name>  
-	sudo -i  
-	cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>
-	```
+    `docker-machine ssh <host_name>`
+	`sudo -i`  
+	`cd /mnt/sda1/var/lib/docker/aufs/diff/<longContainerId>/etc/arangodb# vi <file_name>`
 * copy from docker host into container: `docker cp /source/path/on/host <container_name>:/destination/path/in/container`
 * delete (named) volume: `docker volume rm <volume_name>`
 
