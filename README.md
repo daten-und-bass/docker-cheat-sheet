@@ -77,8 +77,8 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 * list: `docker images [-a]`
 * delete: `docker rmi app1_tl1_tl2_img`
 * delete dangling images in docker ps (listed as "none"):  
-	`docker rmi $(docker images --quiet --filter "dangling=true")`
-		* Alternative:
+	`docker rmi $(docker images --quiet --filter "dangling=true")`  
+			* Alternative:
     `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist
    
 ### NETWORK ###
