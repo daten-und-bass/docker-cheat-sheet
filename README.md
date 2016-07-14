@@ -53,7 +53,7 @@ Important Docker Commands Ordered by Engine, Images and Container and then by Co
 ### STORAGE ###
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
-* Edit (on docker host) a containter file (e.g. .conf of a stopped | not starting) containter:  
+* Edit (on docker host) a containter file (e.g. .conf) of a stopped | not starting containter:  
 	* http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container  
     `docker-machine ssh <host_name>`  
 	`sudo -i`    
