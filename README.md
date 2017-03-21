@@ -44,15 +44,15 @@ and then by
 ### Docker Dockerfile ###
 ```dockerfile
 FROM <img_name>:<tag_name>
-RUN <bash_cmd>
+RUN <some_bash_cmd>
 VOLUME /source/path/on/host:/destination/path/in/container
 EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
-CMD <bash_cmd>
+CMD <main_bash_cmd>
 ```
 ### Docker Compose ###
 ### Docker Swarm ###
 
-### NETWORK ###
+## NETWORK ##
 ### Docker CLI ###
 * list networks: `docker network ls`
 * get info for default container network "bridge": `docker network inspect bridge`
@@ -72,13 +72,13 @@ CMD <bash_cmd>
 `docker network inspect <network_name>` // check ip of this id
 	* Alternative: `docker inspect <container_name>`
 * map exposed container port to docker host: `docker run <...> -p 8529:8529 <...>`
-## Docker Dockerfile ##
-## Docker Compose ##
-## Docker Swarm ##
+### Docker Dockerfile ###
+### Docker Compose ###
+### Docker Swarm ###
 
 
 
-### STORAGE ###
+## STORAGE ##
 ### Docker CLI ###
 * list volumes: `docker volume ls`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
@@ -99,9 +99,9 @@ CMD <bash_cmd>
 		`docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
 
 
-## Docker Dockerfile ##
-## Docker Compose ##
-## Docker Swarm ##
+### Docker Dockerfile ###
+### Docker Compose ##
+### Docker Swarm ###
 
 ## Others ## 
 ### Docker Machine ###
