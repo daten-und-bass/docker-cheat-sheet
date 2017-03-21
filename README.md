@@ -45,7 +45,7 @@ and then by
 ```dockerfile
 FROM <img_name>:<tag_name>
 RUN <bash_cmd>
-Volume /source/path/on/host:/destination/path/in/container
+VOLUME /source/path/on/host:/destination/path/in/container
 EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
 CMD <bash_cmd>
 ```
