@@ -42,7 +42,7 @@ and then by
 * delete: `docker rm [-vf] <ctr_name>`
 * get long id: `docker ps -a --no-trunc`
 ### Docker Dockerfile ###
-```
+```dockerfile
 FROM <img_name>:<tag_name>
 RUN <bash_cmd>
 Volume /source/path/on/host:/destination/path/in/container
