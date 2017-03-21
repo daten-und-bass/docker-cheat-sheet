@@ -10,7 +10,14 @@
                             \____\_______/ 
 
 # Docker Cheat Sheet #
-Important Docker Commands Ordered by Compute (Services), Network, Storage and then by Docker CLI, Dockerfile, Compose and Swarm
+Important Docker Commands Ordered by 
+*Compute (Services),
+*Network,
+*Storage 
+and then by 
+*Docker CLI,
+*Dockerfile, 
+*Compose and Swarm
 		
 ## COMPUTE (Services) ##
 ### Docker CLI ###
