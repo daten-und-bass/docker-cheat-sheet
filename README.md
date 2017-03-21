@@ -30,7 +30,7 @@ and then by
 		* Check results: `docker inspect <ctr_name>`
 * "ssh"/bash into: `docker exec -it <ctr_name> /bin/bash`
 	* Description: Connect to a running container with a new shell
-	* Alternative: `docker attach <ctr_name>`( [more on stackoverflow](http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec) )
+	* Alternative: `docker attach <ctr_name>`( [more on Stackoverflow](http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec) )
 
 		> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
 
@@ -46,7 +46,7 @@ and then by
 FROM <img_name>:<tag_name>
 RUN <bash_cmd>
 Volume /source/path/on/host:/destination/path/in/container
-EXPOSE 3000
+EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
 CMD <bash_cmd>
 ```
 ### Docker Compose ###
