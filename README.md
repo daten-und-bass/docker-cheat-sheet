@@ -40,6 +40,13 @@ and then by
 * delete: `docker rm [-vf] <ctr_name>`
 * get long id: `docker ps -a --no-trunc`
 ### Docker Dockerfile ###
+```
+FROM <img_name>:<tag_name>
+RUN <bash_cmd>
+Volume /source/path/on/host:/destination/path/in/container
+EXPOSE 3000
+CMD <bash_cmd>
+```
 ### Docker Compose ###
 ### Docker Swarm ###
 
