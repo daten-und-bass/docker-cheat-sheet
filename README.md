@@ -25,9 +25,11 @@ and then by
 ## COMPUTE (Services) ##
 ### Docker CLI ###
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name <ctr_name> <img_name>` 
+	* Description: Interactive container attached to the current shell with port to host mapping and a host bind volume
 	* Optional:
-		* check results: `docker inspect <ctr_name>`
+		* Check results: `docker inspect <ctr_name>`
 * "ssh"/bash into: `docker exec -it <ctr_name> /bin/bash`
+	* Description: Connect to a running container with a new shell
 	* Alternative: `docker attach <ctr_name>`( http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec )
 
 		> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
