@@ -14,10 +14,13 @@ Important Docker Commands Ordered by
 * Compute (Services),  
 * Network,  
 * Storage  
+  
 and then by  
+  
 * Docker CLI,  
 * Dockerfile,  
-* Compose and Swarm  
+* Compose and  
+* Swarm  
 		
 ## COMPUTE (Services) ##
 ### Docker CLI ###
