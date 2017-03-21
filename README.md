@@ -30,7 +30,7 @@ and then by
 		* Check results: `docker inspect <ctr_name>`
 * "ssh"/bash into: `docker exec -it <ctr_name> /bin/bash`
 	* Description: Connect to a running container with a new shell
-	* Alternative: `docker attach <ctr_name>`( http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec )
+	* Alternative: `docker attach <ctr_name>`( [more on stackoverflow](http://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec) )
 
 		> Attach isn't for running an extra thing in a container, it's for attaching to the running process.
 
