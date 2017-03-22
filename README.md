@@ -172,7 +172,7 @@ networks:
 volumes:
   <vol_name>:		# named volume created before
     external: true
-
+```
 ### Docker Swarm ###
 
 ## Others ## 
