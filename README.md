@@ -103,7 +103,29 @@ volumes:
 	* Alternative: `docker inspect <container_name>`
 * map exposed container port to docker host: `docker run <...> -p 8529:8529 <...>`
 ### Docker Dockerfile ###
+```dockerfile
+<...>
+
+EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
+
+<...>
+```
 ### Docker Compose ###
+```yaml
+version: "3"
+
+services: 
+  <...>:
+
+
+networks:
+  <net_name>:		# custom network created before
+    external: true
+
+volumes:
+  <...>:
+
+
 ### Docker Swarm ###
 
 
@@ -130,7 +152,27 @@ volumes:
 
 
 ### Docker Dockerfile ###
+```dockerfile
+<...>
+
+VOLUME /source/path/on/host:/destination/path/in/container
+
+<...>
+```
 ### Docker Compose ##
+```yaml
+version: "3"
+
+services: 
+  <...>:
+
+networks:
+  <...>:
+
+volumes:
+  <vol_name>:		# named volume created before
+    external: true
+
 ### Docker Swarm ###
 
 ## Others ## 
