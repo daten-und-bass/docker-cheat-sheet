@@ -124,7 +124,7 @@ networks:
 
 volumes:
   <...>:
-
+```
 
 ### Docker Swarm ###
 
