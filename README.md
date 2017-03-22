@@ -50,6 +50,35 @@ EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
 CMD <main_bash_cmd>
 ```
 ### Docker Compose ###
+```
+version: "3"
+
+services: 
+  <srv_name>:
+    build:
+      context: ./path/to/dir
+      args:
+        - <port>
+    image: <reg_tag>/<img_name>:<img_tag>
+    networks:
+      - <net_name>
+    ports:
+       - "${<port_env_var>}:${<port_env_var>}"
+    environment:
+      - NODE_ENV=<nodejs_env>
+      - PORT_ENV_VAR="${<port_env_var>}"
+    volumes:
+      - /source/path/on/host:/destination/path/in/container # host bind
+    security_opt:
+      - no-new-privileges
+
+networks:
+  <net_name>:		# custom network created before
+    external: true
+volumes:
+  <vol_name>:		# named volume created before
+    external: true
+```
 ### Docker Swarm ###
 
 ## NETWORK ##
