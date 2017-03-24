@@ -101,6 +101,8 @@ version: "3"
 
 services: 
   <srv_name>:
+    <...>:  
+
     deploy:
       mode: replicated         # or 'global' for one on each docker swarm host
       replicas: <amount>          
@@ -108,7 +110,7 @@ services:
         condition: <condition>
         max_attempts: <amount>
         delay: <amount>s
-    resources:
+      resources:
         limits:                # hard limit
           cpus: '<cpu_share>'
           memory: <amount>M
@@ -116,9 +118,10 @@ services:
           cpus: '<cpu_share>'
           memory: <amount>M  
 
-networks:
-  <...>:
+    <...>:  
 
+networks:
+  <...>:  
 
 volumes:
   <...>:
