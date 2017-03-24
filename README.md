@@ -19,8 +19,11 @@ and then by
   
 * Docker CLI,  
 * Dockerfile,  
-* Compose and  
+* Compose, and  
 * Swarm  
+
+An explaining blog post can be foud here:
+https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docker-version-1-13/
 		
 ## COMPUTE (Services) ##
 ### Docker CLI ###
@@ -196,9 +199,11 @@ volumes:
 	* Alternative: `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist 
 ### OTHER ###
 * get help: `docker <command_name> --help`
-### OTHER ###
-* get help: `docker <command_name> --help`
 
+## Further information ##
+
+Reference documentation:
+https://docs.docker.com/reference/
 
 
 
