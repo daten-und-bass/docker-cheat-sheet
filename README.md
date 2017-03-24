@@ -95,7 +95,7 @@ volumes:
     external: true
 ```
 ### Docker Swarm ###
-docker stack deploy --compose-file=docker-compose.yml ${COMPOSE_PROJECT_NAME}
+`docker stack deploy --compose-file=docker-compose.yml ${COMPOSE_PROJECT_NAME}`
 ```yaml
 version: "3"
 
@@ -117,8 +117,6 @@ services:
         reservations:          # soft limit
           cpus: '<cpu_share>'
           memory: <amount>M  
-
-    <...>:  
 
 networks:
   <...>:  
