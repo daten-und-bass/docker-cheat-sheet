@@ -46,12 +46,20 @@ https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docke
 * get long id: `docker ps -a --no-trunc`
 ### Docker Dockerfile ###
 ```dockerfile
-FROM <img_name>:<tag_name>
+FROM <img_name>:<tag_name>  
+
 ARG <port_env_var>
-ENV NODE_ENV ${<nodejs_env>}
-RUN <some_bash_cmd>
-VOLUME /source/path/on/host:/destination/path/in/container
-EXPOSE ${<port_env_var>} # only exposed by container, but not yet mapped to the docker host
+ENV NODE_ENV ${<nodejs_env>}  
+
+RUN <some_bash_cmd> \
+	&& <some_bash_cmd>
+
+COPY <file_name> /destination/path/in/container
+VOLUME /source/path/on/host:/destination/path/in/container  
+
+EXPOSE ${<port_env_var>} # only exposed by container, but not yet mapped to the docker host  
+
+WORKDIR <dir_name>
 CMD <main_bash_cmd>
 ```
 ### Docker Compose ###
