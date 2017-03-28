@@ -62,7 +62,16 @@ EXPOSE ${<port_env_var>}    # only exposed by container, but not yet mapped to t
 USER <user_name>            # set permisions accordingly (before) ... if not specified: root
 WORKDIR <dir_name>
 CMD <main_bash_cmd>         # or ENTRYPOINT command (not overwritable) for external scripts
-```
+```  
+#### Docker Images ####
+* build:  
+`cd .`  
+`docker build -t <image_name> .`
+* list: `docker images [-a]`
+* delete: `docker rmi <img_name>`
+* delete dangling images in docker ps (listed as "none"): `docker rmi $(docker images --quiet --filter "dangling=true")` 
+    * Alternative: `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist  
+
 ### Docker Compose ###
 ```yaml
 version: "3"
@@ -238,14 +247,7 @@ volumes:
 * listen to events: `docker events`
 * get help: `docker-machine <command_name> --help`
 * get env vars: `docker-machine env <host_name>`
-### Docker Images ###
-* build:  
-`cd .`  
-`docker build -t <image_name> .`
-* list: `docker images [-a]`
-* delete: `docker rmi <img_name>`
-* delete dangling images in docker ps (listed as "none"): `docker rmi $(docker images --quiet --filter "dangling=true")` 
-    * Alternative: `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist 
+ 
 ### OTHER ###
 * get help: `docker <command_name> --help`
 
