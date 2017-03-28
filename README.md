@@ -67,7 +67,7 @@ CMD <main_bash_cmd>         # or ENTRYPOINT command (not overwritable) for exter
 * build:  
 `cd .`  
 `docker build -t <image_name> .`
-* list: `docker images [-a]`
+* list all images: `docker images [-a]`
 * delete: `docker rmi <img_name>`
 * delete dangling images in docker ps (listed as "none"): `docker rmi $(docker images --quiet --filter "dangling=true")` 
     * Alternative: `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist  
