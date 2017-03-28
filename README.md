@@ -63,7 +63,7 @@ USER <user_name>            # set permisions accordingly (before) ... if not spe
 WORKDIR <dir_name>
 CMD <main_bash_cmd>         # or ENTRYPOINT command (not overwritable) for external scripts
 ```  
-#### Docker Images ####
+
 * build:  
 `cd .`  
 `docker build -t <image_name> .`
