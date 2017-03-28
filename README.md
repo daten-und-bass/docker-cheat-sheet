@@ -103,6 +103,12 @@ volumes:
   <vol_name>:           # named volume created before
     external: true
 ```
+* test config: `docker-compose config`
+
+* build: `docker-compose build`
+
+* push to registry: `docker-compose push    # as specified above by <reg_tag>`
+
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`  
 ```yaml
