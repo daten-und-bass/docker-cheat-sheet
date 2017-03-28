@@ -109,6 +109,14 @@ volumes:
 
 * push to registry: `docker-compose push    # as specified above by <reg_tag>`
 
+* create & start in one: `docker-compose up`               
+
+* start | stop: `docker-compose start|restart|stop <project_name>`
+
+* kill | delete: `docker-compose kill|rm <project_name>`
+
+
+
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`  
 ```yaml
