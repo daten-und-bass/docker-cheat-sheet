@@ -119,7 +119,7 @@ volumes:
 
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`
-    * before do : `docker-compose build` and `docker-compose push`
+    * before do: `docker-compose build` and `docker-compose push`
 
 ```yaml
 version: "3"
@@ -168,6 +168,7 @@ volumes:
     * Optional:
         * specify a subnet (to avoid overlap with other networks!): `<...> --subnet=192.168.0.0/16 <...>`
         * specify which ip's to take: `<...> --ip-range=192.168.1.0/24 <...>`
+        * specify as internal: `--internal`
     * connect container to it:
       * in `run` command (only one network allowed): `docker run <...> --net=<network_name> <...> `
       * connect existing container: `docker network connect <network_name> <container_name>`
