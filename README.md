@@ -257,6 +257,10 @@ volumes:
     external: true
 ```
 ### Docker Swarm ###
+Work in progress
+
+Keep in mind that regular volumes (see above) are always local to that host only (so a container needing that volume can only correctly start on thist host).
+
 
 ## Others ## 
 ### Docker Machine ###
