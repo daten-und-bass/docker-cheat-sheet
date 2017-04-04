@@ -205,9 +205,12 @@ volumes:
 ```
 
 ### Docker Swarm ###
+* specify ip or eth settings for swarm cluster: 
+    * Advertised address to swarm members for API access and overlay networking: `docker swarm init --advertise-addr <addr> <...>`
+    * Listening address for inbound swarm manager traffic: `docker swarm init --listen-addr <addr> <...>`
+
 * create overlay network: `docker network create --driver overlay --subnet=<ip_range> --gateway=<ip_address> <net_name>`
     * Optional: `--attachable` for allowing unmanaged (non-swarm) containers and `--opt encrypted` for encryption
-
 
 
 ## STORAGE ##
