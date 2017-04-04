@@ -119,7 +119,7 @@ volumes:
 
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`
-    * before do : docker-compose build && docker-compose push
+    * before do : `docker-compose build` and `docker-compose push`
 
 ```yaml
 version: "3"
@@ -204,7 +204,7 @@ volumes:
 ```
 
 ### Docker Swarm ###
-* create overlay network: ` docker network create --driver overlay --subnet=<ip_range> --gateway=<ip_address> <net_name>
+* create overlay network: `docker network create --driver overlay --subnet=<ip_range> --gateway=<ip_address> <net_name>`
     * Optional: `--attachable` for allowing unmanaged (non-swarm) containers and `--opt encrypted` for encryption
 
 
