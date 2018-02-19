@@ -28,7 +28,7 @@ https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docke
 ## COMPUTE (Services) ##
 ### Docker CLI ###
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name <ctr_name> <img_name>` 
-    * Description: Interactive container attached to the current shell with port to host mapping and a host bind volume
+    * Description: Interactive container not attached to the current shell with port to host mapping and a host bind volume
     * Optional:
         * Check results: `docker inspect <ctr_name>`
 * "ssh"/bash into: `docker exec -it <ctr_name> /bin/bash`
