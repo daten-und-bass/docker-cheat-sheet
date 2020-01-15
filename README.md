@@ -216,6 +216,7 @@ volumes:
 ## STORAGE ##
 ### Docker CLI ###
 * list volumes: `docker volume ls`
+* details volumes: `docker volume inspect`
 * create (named) volume (available only on this docker host): `docker volume create --name <volume_name>`
 * Edit (on docker host) a containter file (e.g. .conf) of a stopped | not starting containter:  
     * http://stackoverflow.com/questions/32750748/how-to-edit-files-in-stopped-not-starting-docker-container  
