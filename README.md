@@ -120,7 +120,7 @@ volumes:
 
 * kill | delete: `docker-compose kill|rm <project_name>`
 
-* set multiple compose files manually as `ENVIRONMENT VARIABLE: `export COMPOSE_FILE="/path/to/docker-stack.yml:/path/to/docker-stack.dev.yml"` ( [more here](https://docs.docker.com/compose/reference/envvars/) )
+* set multiple compose files manually as `ENVIRONMENT VARIABLE`: `export COMPOSE_FILE="/path/to/docker-stack.yml:/path/to/docker-stack.dev.yml"` ( [more here](https://docs.docker.com/compose/reference/envvars/) )
 
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`
