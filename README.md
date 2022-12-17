@@ -41,7 +41,7 @@ https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docke
 * start | stop: `docker start|restart|stop <ctr_name>`
 * rename: `docker rename <ctr_name> <new_name>`
 * list: `docker ps [-a]`
-* list formatted : `docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"`
+* list formatted: `docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"`
 * get runnings processes: `docker top <ctr_name>`
 * get logs: `docker logs <ctr_name>`
 * delete: `docker rm [-vf] <ctr_name>`
@@ -271,18 +271,41 @@ volumes:
     external: true
 ```
 ### Docker Swarm ###
-Work in progress
-
 Keep in mind that regular volumes (see above) are always local to that host only (so a container needing that volume can only correctly start on thist host).
 
+* create cluster aware storage resources, e.g. via `NFS` (with volumes available among multiple hosts):  
+https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume
+https://docs.docker.com/engine/reference/commandline/volume_create/#driver-specific-options
 
-## Others ## 
+* create cluster aware storage resources, e.g, via `GlusterFS` (with also data resources themselves replicated among multiple hosts):  
+https://gist.github.com/scyto/f4624361c4e8c3be2aad9b3f0073c7f9
+
+
+## Other ##
+
+### Security ###
+* create secret: docker secret create <sec_name> /path/to/<sec_file>
+* remove secret: docker secret rm <sec_name>
+* more [here](https://docs.docker.com/engine/swarm/secrets/) and [here](https://docs.docker.com/engine/reference/commandline/secret/) ... and same for [configs](https://docs.docker.com/engine/reference/commandline/config/)
+
 ### Docker Machine ###
 * start | stop: `docker-machine start|stop <host_name>` 
 * ssh into: `docker-machine ssh <host_name>` 
 * send one ssh command: `docker-machine ssh <host_name> '<command> <params> <...>`
 * adjust time drift: `docker-machine ssh <host_name> 'sudo ntpclient -s -h pool.ntp.org`
     * only neccessary in a docker toolbox vm on virtualbox
+
+### Docker Daemon Access ###
+* connect to remote docker daemon from a local shell: `export DOCKER_HOST="ssh://<user>@<ip>"`
+
+### Registry ###
+* login to registry: `echo "${token}"| docker login registry.example.com --username "${user}" --password-stdin`
+* logout from from registry: `docker logout registry.example.com`
+
+### Ingress ###
+* use nginx as ingress (like e.g. traefik): https://stackoverflow.com/a/46911640/6092191
+* get end user's client ip: https://dockerswarm.rocks/traefik/#getting-the-client-ip
+
 ### Docker Events ###
 * listen to events: `docker events`
 * get help: `docker-machine <command_name> --help`
@@ -290,6 +313,9 @@ Keep in mind that regular volumes (see above) are always local to that host only
  
 ### OTHER ###
 * get help: `docker <command_name> --help`
+
+
+
 
 ## Further information ##
 
