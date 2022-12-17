@@ -171,6 +171,7 @@ volumes:
 
 
 ## NETWORK ##
+
 ### Docker CLI ###
 * list networks: `docker network ls`
 * get info for default container network "bridge": `docker network inspect bridge`
@@ -191,6 +192,7 @@ volumes:
 `docker network inspect <network_name>` // check ip of this id
     * Alternative: `docker inspect <container_name>`
 * map exposed container port to docker host: `docker run <...> -p 8529:8529 <...>`
+
 ### Docker Dockerfile ###
 ```dockerfile
 <...>
@@ -199,6 +201,7 @@ EXPOSE 3000 # only exposed by container, but not yet mapped to the docker host
 
 <...>
 ```
+
 ### Docker Compose ###
 ```yaml
 version: "3"
@@ -227,6 +230,7 @@ volumes:
 
 
 ## STORAGE ##
+
 ### Docker CLI ###
 * list volumes: `docker volume ls`
 * details volumes: `docker volume inspect`
@@ -247,7 +251,6 @@ volumes:
     * __README first__: https://dzone.com/articles/docker-clean-after-yourself
         `docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes`
 
-
 ### Docker Dockerfile ###
 ```dockerfile
 <...>
@@ -256,6 +259,7 @@ VOLUME /source/path/on/host:/destination/path/in/container
 
 <...>
 ```
+
 ### Docker Compose ##
 ```yaml
 version: "3"
@@ -270,6 +274,7 @@ volumes:
   <vol_name>:       # named volume created before
     external: true
 ```
+
 ### Docker Swarm ###
 Keep in mind that regular volumes (see above) are always local to that host only (so a container needing that volume can only correctly start on thist host).
 
@@ -300,7 +305,7 @@ https://gist.github.com/scyto/f4624361c4e8c3be2aad9b3f0073c7f9
 
 ### Registry ###
 * login to registry: `echo "${token}"| docker login registry.example.com --username "${user}" --password-stdin`
-* logout from from registry: `docker logout registry.example.com`
+* logout from registry: `docker logout registry.example.com`
 
 ### Ingress ###
 * use nginx as ingress (like e.g. traefik): https://stackoverflow.com/a/46911640/6092191
@@ -313,8 +318,6 @@ https://gist.github.com/scyto/f4624361c4e8c3be2aad9b3f0073c7f9
  
 ### OTHER ###
 * get help: `docker <command_name> --help`
-
-
 
 
 ## Further information ##
