@@ -26,6 +26,7 @@ An explaining blog post can be foud here:
 https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docker-version-1-13/
         
 ## COMPUTE (Services) ##
+
 ### Docker CLI ###
 * create & run: `docker run -itd -p 3000:3000 -v /source/path/on/host:/destination/path/in/container --name <ctr_name> <img_name>` 
     * Description: Interactive container not attached to the current shell with port to host mapping and a host bind volume
@@ -40,10 +41,12 @@ https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docke
 * start | stop: `docker start|restart|stop <ctr_name>`
 * rename: `docker rename <ctr_name> <new_name>`
 * list: `docker ps [-a]`
+* list formatted : `docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"`
 * get runnings processes: `docker top <ctr_name>`
 * get logs: `docker logs <ctr_name>`
 * delete: `docker rm [-vf] <ctr_name>`
 * get long id: `docker ps -a --no-trunc`
+
 ### Docker Dockerfile ###
 ```dockerfile
 FROM <img_name>:<tag_name>  
@@ -71,6 +74,8 @@ CMD <main_bash_cmd>         # or ENTRYPOINT command (not overwritable) for exter
 * delete: `docker rmi <img_name>`
 * delete dangling images in docker ps (listed as "none"): `docker rmi $(docker images --quiet --filter "dangling=true")` 
     * Alternative: `docker images -qf dangling=true | xargs docker rmi` // untested yet, but always without error even if no dangling images exist  
+
+* use `Environment Variables`: [see on Stackoverflow](https://stackoverflow.com/questions/46917831/how-to-load-several-environment-variables-without-cluttering-the-dockerfile/46925953#46925953 )
 
 ### Docker Compose ###
 ```yaml
@@ -115,11 +120,15 @@ volumes:
 
 * kill | delete: `docker-compose kill|rm <project_name>`
 
-
+* set multiple compose files manually as `ENVIRONMENT VARIABLE: `export COMPOSE_FILE="/path/to/docker-stack.yml:/path/to/docker-stack.dev.yml"` ( [more here](https://docs.docker.com/compose/reference/envvars/) )
 
 ### Docker Swarm ###
 * deploy stack: `docker stack deploy --compose-file=docker-compose.yml <stack_name>    # e.g. ${COMPOSE_PROJECT_NAME}`
     * before do: `docker-compose build` and `docker-compose push`
+
+* use multiple compose or stack files for deploy:
+    * optioanl (if stored as variable): `echo "${ces_docker_stack_files}" # /path/to/docker-stack.yml -c /path/to/docker-stack.dev.yml`
+    * `docker stack deploy -c $(echo "${ces_docker_stack_files}") ${COMPOSE_PROJECT_NAME} --with-registry-auth`
 
 ```yaml
 version: "3"
@@ -153,8 +162,10 @@ volumes:
 * list all stacks: `docker stack ls`
 
 * list tasks of stack: `docker stack ps <stack_name>`
+* list tasks of stack: `docker stack ps "${COMPOSE_PROJECT_NAME}"`
 
-* list services of stack: `docker stack services <stack_name>     # services `
+* list services of stack: `docker stack services <stack_name>`
+* logs of a stack service: `docker service logs <service_name>`
 
 * delete: `docker stack rm <stack_name>`  
 
@@ -174,6 +185,8 @@ volumes:
       * connect existing container: `docker network connect <network_name> <container_name>`
       * give container a static ip: `<...> --ip=192.168.1.11 <...>`
 * delete custom network: `docker network rm <network_name>`
+
+* create custom overlay network (encrypted): `docker network create --opt encrypted --driver overlay <network_name>`
 
 * get container ip:  
 `docker ps` // get id  
