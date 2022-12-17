@@ -127,7 +127,7 @@ volumes:
     * before do: `docker-compose build` and `docker-compose push`
 
 * use multiple compose or stack files for deploy:
-    * optioanl (if stored as variable): `echo "${ces_docker_stack_files}" # /path/to/docker-stack.yml -c /path/to/docker-stack.dev.yml`
+    * optional (if stored as variable): `echo "${ces_docker_stack_files}" # /path/to/docker-stack.yml -c /path/to/docker-stack.dev.yml`
     * `docker stack deploy -c $(echo "${ces_docker_stack_files}") ${COMPOSE_PROJECT_NAME} --with-registry-auth`
 
 ```yaml
