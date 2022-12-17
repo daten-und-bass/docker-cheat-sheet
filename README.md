@@ -273,7 +273,7 @@ volumes:
 ### Docker Swarm ###
 Keep in mind that regular volumes (see above) are always local to that host only (so a container needing that volume can only correctly start on thist host).
 
-* create cluster aware storage resources, e.g. via `NFS` (with volumes available among multiple hosts):  
+* create cluster aware storage resources, e.g. via `NFS` (with volumes available on multiple hosts):  
 https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume
 https://docs.docker.com/engine/reference/commandline/volume_create/#driver-specific-options
 
@@ -284,8 +284,8 @@ https://gist.github.com/scyto/f4624361c4e8c3be2aad9b3f0073c7f9
 ## Other ##
 
 ### Security ###
-* create secret: docker secret create <sec_name> /path/to/<sec_file>
-* remove secret: docker secret rm <sec_name>
+* create secret: `docker secret create <sec_name> /path/to/<sec_file>`
+* remove secret: `docker secret rm <sec_name>`
 * more [here](https://docs.docker.com/engine/swarm/secrets/) and [here](https://docs.docker.com/engine/reference/commandline/secret/) ... and same for [configs](https://docs.docker.com/engine/reference/commandline/config/)
 
 ### Docker Machine ###
