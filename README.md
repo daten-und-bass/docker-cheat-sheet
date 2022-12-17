@@ -165,7 +165,7 @@ volumes:
 * list tasks of stack: `docker stack ps "${COMPOSE_PROJECT_NAME}"`
 
 * list services of stack: `docker stack services <stack_name>`
-* logs of a stack service: `docker service logs <service_name>`
+* show logs of a stack service: `docker service logs <service_name>`
 
 * delete: `docker stack rm <stack_name>`  
 
@@ -184,9 +184,10 @@ volumes:
       * in `run` command (only one network allowed): `docker run <...> --net=<network_name> <...> `
       * connect existing container: `docker network connect <network_name> <container_name>`
       * give container a static ip: `<...> --ip=192.168.1.11 <...>`
-* delete custom network: `docker network rm <network_name>`
 
 * create custom overlay network (encrypted): `docker network create --opt encrypted --driver overlay <network_name>`
+
+* delete custom network: `docker network rm <network_name>`
 
 * get container ip:  
 `docker ps` // get id  
