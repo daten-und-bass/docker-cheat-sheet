@@ -184,9 +184,6 @@ volumes:
       * in `run` command (only one network allowed): `docker run <...> --net=<network_name> <...> `
       * connect existing container: `docker network connect <network_name> <container_name>`
       * give container a static ip: `<...> --ip=192.168.1.11 <...>`
-
-* create custom overlay network (encrypted): `docker network create --opt encrypted --driver overlay <network_name>`
-
 * delete custom network: `docker network rm <network_name>`
 
 * get container ip:  
@@ -222,6 +219,8 @@ volumes:
 * specify ip or eth settings for swarm cluster: 
     * Advertised address to swarm members for API access and overlay networking: `docker swarm init --advertise-addr <addr> <...>`
     * Listening address for inbound swarm manager traffic: `docker swarm init --listen-addr <addr> <...>`
+
+* create custom overlay network (encrypted): `docker network create --opt encrypted --driver overlay <network_name>`
 
 * create overlay network: `docker network create --driver overlay --subnet=<ip_range> --gateway=<ip_address> <net_name>`
     * Optional: `--attachable` for allowing unmanaged (non-swarm) containers and `--opt encrypted` for encryption
