@@ -24,6 +24,9 @@ and then by
 
 An explaining blog post can be foud here:  
 https://daten-und-bass.io/blog/new-docker-cheat-sheet-complete-rewrite-for-docker-version-1-13/
+
+An updating blog post can be foud here:  
+https://daten-und-bass.io/blog/docker-cheat-sheet-update/
         
 ## COMPUTE (Services) ##
 
