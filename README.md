@@ -311,7 +311,7 @@ https://gist.github.com/scyto/f4624361c4e8c3be2aad9b3f0073c7f9
 * logout from registry: `docker logout registry.example.com`
 
 ### Ingress ###
-* use nginx as ingress (like e.g. traefik): https://stackoverflow.com/a/46911640/6092191
+* use nginx as ingress (like e.g. traefik): [https://stackoverflow.com/a/46911640/6092191](https://stackoverflow.com/a/44303568/6092191)
 * get end user's client ip: https://dockerswarm.rocks/traefik/#getting-the-client-ip
 
 ### Docker Events ###
